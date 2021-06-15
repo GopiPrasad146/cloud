@@ -1,10 +1,10 @@
 import tkinter as tk
-from tkinter.filedialog import askopefilename , asksaveasfilename
-
+def mfileopen():
+    file1 = filedialog.askopenfile()
+def mSaveasopen():
+    file1 = filedialog.asksaveasfile()
 def saving_file():
-    file_location = asksaveasfilename(
-        defaultextension="txt",
-        filetypes=[("Text file", "*.txt"), ["All file","*.*"]])
+    file_location = asksaveasfilename(defaultextension="txt", filetypes=[("Text file", "*.txt"), ["All file","*.*"]])
     if not file-location:
         return
     with open(file_location,"w") as file_output:
@@ -13,8 +13,7 @@ def saving_file():
     root.title(f"MY NOTE POD - {file-location}")
     
 def opening_file():
-    file_location = askopefilename(
-                            filetypes=[("Text files", "*.txt"),["All files","*.*"]])
+    file_location = askopefilename(filetypes=[("Text files", "*.txt"),["All files","*.*"]])
     if not file_location:
          return
     text_edit.delete(1.0,tk.END)
@@ -25,11 +24,11 @@ def opening_file():
 
 root = tk.Tk()
 root.title("MY OWN NOTEPAD")
-root.rowconfigur(0,minsize=800)
-root.columnconfigure(1,minsize=800)
+root.rowconfigure(0, minsize=800)
+root.columnconfigure(1, minsize=800)
 
 text_edit = tk.Text(root)
-text_edit.grif(row=0, column=1, sticky="nsew")
+text_edit.grid(row=0, column=1, sticky="nsew")
 
 frame_button = tk.Frame(root, relief=tk.RAISED,bd=3)
 frame_button.grid(row=0, column=0, sticky="ns")
@@ -43,4 +42,4 @@ button_save = tk.Button(frame_button, text="EDIT")
 button_open.grid(row=1,column=0,padx=5)
 
 
-root.maninloop()
+root.mainloop()
